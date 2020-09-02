@@ -17,10 +17,11 @@ app.use(function(req, res, next) {
 
 require('./Route/User')(app)
 require('./Route/Questions')(app)
+require('./Route/Response')(app)
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(config.url,  { useNewUrlParser: true }, function(err) {
+mongoose.connect(config.url,  { useNewUrlParser: true, useUnifiedTopology: true}, function(err) {
     if (err) throw err;
     console.log('Successfully connected to Database')
 })

@@ -7,6 +7,15 @@ var responseSchema = new Schema({
   description: {
     type: String,
     required: true,
+    unique: true
+  },
+  status: {
+    type: String,
+    required: true
+  },
+  question: {
+    type: Schema.Types.ObjectId,
+    ref: 'Question',
   }
 });
 

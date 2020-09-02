@@ -14,9 +14,7 @@ exports.create = (req,res) => {
             })
         }
 
-    const question = new Question({
-        description: req.body.description,
-    })
+    const question = new Question(req.body)
 
     question.save()
     .then(data => {
@@ -24,6 +22,17 @@ exports.create = (req,res) => {
     }).catch(err => {
         res.status(500).send({
             message: err.message 
+        })
+    })
+}
+
+exports.getResponse = (req, res) => {
+    Question.find({_id: req.params.id}).populate({ path: 'response', model: 'Response'})
+    .then(notes => {
+        res.status(200).send(notes)
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message
         })
     })
 }

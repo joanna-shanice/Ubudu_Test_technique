@@ -24,6 +24,12 @@ var userSchema = new Schema({
     type: String,
     required: true,
   },
+  participation: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Participation'
+    }
+  ]
 });
 
 module.exports = mongoose.model('User', userSchema);

@@ -13,12 +13,7 @@ var participationSchema = new Schema({
     ref: 'User',
     required: true
   },
-  log : [
-      {
-          reponse: String,
-          question: String
-      }
-  ]
+  log: [Schema.Types.Mixed],
 }, {
     timestamps: true
 });

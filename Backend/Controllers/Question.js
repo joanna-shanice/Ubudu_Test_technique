@@ -39,7 +39,7 @@ exports.getResponse = (req, res) => {
 
 
 exports.findAll = (req, res) => {
-    Question.find()
+    Question.find().populate({ path: 'response', model: 'Response'})
     .then(notes => {
         res.send(notes);
     }).catch(err => {

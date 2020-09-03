@@ -2,7 +2,9 @@ const initState = {
     authError: null,
     logIn: false,
     user: {},
-    loading: false
+    loading: false,
+    participationError: null,
+    participationloading: false
 }
 
 const authReducer = (state = initState, action) => {
@@ -12,10 +14,32 @@ const authReducer = (state = initState, action) => {
             return {
                 ...state,
                 authError: 'Login failed',
-                logIn: false
+                logIn: action.err
             }
         case 'LOGIN_SUCCESS':
             console.log('Login succes')
+            return {
+                ...state,
+                authError: null,
+                logIn: true,
+                user: action.payload
+            }
+        case 'GET_PARTICIPATION_BEGIN':
+            console.log('get parti begin')
+            return {
+                ...state,
+                participationloading: true,
+                participationError: null
+            }
+        case 'GET_PARTICIPATION_ERROR':
+            console.log('get parti failed')
+            return {
+                ...state,
+                participationError: action.err,
+                participationloading: false
+            }
+        case 'GET_PARTICIPATION_SUCCESS':
+            console.log('get parti succes')
             return {
                 ...state,
                 authError: null,

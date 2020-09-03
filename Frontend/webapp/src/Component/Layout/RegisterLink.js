@@ -6,19 +6,11 @@ import { signOut } from '../../Store/Action/authAction'
 const RegisterLinks = (props) => {
   return (
     <Navbar fluid collapseOnSelect sticky="top" bg="light" variant="light">
-      <Navbar.Brand href="/">
-        <img 
-          src={require("./logo.PNG")}
-          width="40"
-          height="40"
-          className="d-inline-block align-top"
-        />
-      </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav"> 
          <Nav className="mr-auto">
-            <Nav.Link href='/partition'> QCM </Nav.Link>
-            <Nav.Link href='/Historique'> Historique </Nav.Link>
+            <Nav.Link href='/'> QCM </Nav.Link>
+            <Nav.Link href='/historique'> Historique </Nav.Link>
           </Nav>
           <Nav className="justify-content-end">
             <Nav.Link href='/login' onSelect={props.signOut}> Déconnexion </Nav.Link>

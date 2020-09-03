@@ -34,9 +34,9 @@ exports.create = (req,res) => {
             })
 
         })
-        res.status(200).send(data);
+        return res.status(200).send(data);
     }).catch(err => {
-        res.status(500).send({
+        return res.status(500).send({
             message: err.message 
         })
     })
@@ -46,9 +46,9 @@ exports.create = (req,res) => {
 exports.findAll = (req, res) => {
     Participation.find()
     .then(notes => {
-        res.send(notes);
+        return res.send(notes);
     }).catch(err => {
-        res.status(500).send({
+        return res.status(500).send({
             message: err.message || "Some error occurred while retrieving notes."
         });
     });
@@ -61,10 +61,12 @@ exports.update = (req, res) => {
             question: req.body.question,
             response: req.body.response
         }
+        data.score = parseInt(req.body.score + data.score)
         data.log.push(obj)
         data.save()
+        return res.status(200).send(data)
     }).catch(err => {
-        res.status(500).send({
+        return res.status(500).send({
             message: err.message || "Some error occurred while retrieving notes."
         });
     });

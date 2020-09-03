@@ -3,6 +3,6 @@ module.exports = (app) => {
 
     app.post('/api/participation/create', participation.create)
     app.get('/api/participation', participation.findAll)
-    app.put('/api/participation', participation.update)
+    app.put('/api/participation/:id', participation.update)
 
 }

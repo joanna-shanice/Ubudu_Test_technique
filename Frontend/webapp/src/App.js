@@ -4,6 +4,7 @@ import Routes from './Routes'
 import RegisterLink from './Component/Layout/RegisterLink'
 import LogoutLink from './Component/Layout/LogoutLink'
 import { connect } from 'react-redux'
+import Footer from './Component/Layout/Footer'
 
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
         <div className="App">
           {links}
           <Routes/>
+          <Footer/>
         </div>
     )
   }

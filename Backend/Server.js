@@ -18,6 +18,7 @@ app.use(function(req, res, next) {
 require('./Route/User')(app)
 require('./Route/Questions')(app)
 require('./Route/Response')(app)
+require('./Route/Participation')(app)
 
 mongoose.Promise = global.Promise;
 

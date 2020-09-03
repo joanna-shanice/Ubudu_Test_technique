@@ -21,11 +21,26 @@ export const SignIn = (credentials) => {
             dispatch({ type:'LOGIN_SUCCESS', payload: result.data})
         })
         .catch((err) => {
-            console.log(err)
+            console.log(err.message)
             dispatch({ type:'LOGIN_ERROR', err })
         })
     }
 }
+
+export const getParticipation = (obj) => {
+
+
+    return (dispatch, getState) => {
+        axios.get('http://localhost:3001/api/user/' + obj.id, config)
+        .then(result => {
+            dispatch({ type:'GET_PARTICIPATION_SUCCESS', payload: result.data})
+        })
+        .catch((err) => {
+            dispatch({ type:'GET_PARTICIPATION_ERROR', err })
+        })
+    }
+}
+
 
 export const signOut = () => {
     return (dispatch, getState) => {   
@@ -43,7 +58,6 @@ export const SignUp = (user) => {
         number: user.number
     })
 
-    console.log(requestBody)
     return(dispatch, getState) => (
         axios.post('http://localhost:3001/api/register', requestBody, config)
         .then(result => {

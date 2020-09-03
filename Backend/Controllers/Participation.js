@@ -61,7 +61,7 @@ exports.update = (req, res) => {
             question: req.body.question,
             response: req.body.response
         }
-        data.score = parseInt(req.body.score + data.score)
+        data.score = parseInt(req.body.score) + parseInt(data.score)
         data.log.push(obj)
         data.save()
         return res.status(200).send(data)

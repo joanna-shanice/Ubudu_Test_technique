@@ -28,11 +28,10 @@ class QCMSummary extends Component {
                 show: false,
             })
             var score = 0
-            if (this.state.value == "True")
+            if (this.state.response.value == "True")
                 score = 3
             else
                 score = -1
-
 
             this.props.updateParticipation({ 
                 id: this.props.participation._id,
